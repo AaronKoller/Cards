@@ -10,6 +10,8 @@ namespace Cards
     {
         static void Main(string[] args)
         {
+            var deck = new DeckSuitValue<Standard52Suit, Standard52Value>();
+            deck.CreateDeck(new Standard52());
         }
     }
 }

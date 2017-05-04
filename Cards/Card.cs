@@ -1,14 +1,22 @@
-﻿
-using System;
+﻿using System;
 
 namespace Cards
 {
     class Standard52 : ICardSuitValue<Standard52Suit, Standard52Value>
     {
-        public Standard52(Standard52Suit suit, Standard52Value value)
+        public Standard52()
+        {
+        }
+
+        private Standard52(Standard52Suit suit, Standard52Value value)
         {
             Suit = suit;
             Value = value;
+        }
+
+        ICardSuitValue<Standard52Suit, Standard52Value> ICardSuitValue<Standard52Suit, Standard52Value>.CreateCard(Standard52Suit suit, Standard52Value value)
+        {
+            return new Standard52(suit, value);
         }
 
         public Standard52Suit Suit { get; }

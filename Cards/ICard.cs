@@ -1,6 +1,6 @@
 ﻿namespace Cards
 {
-    public interface ICardSuitValue<out S, out V>
+    public interface ICardSuitValue<S, V>
     {
         S Suit { get; }
 
@@ -9,5 +9,8 @@
         int LengthSuit { get; }
 
         int LengthValue { get; }
+
+        ICardSuitValue<S, V> CreateCard(S s,V v);
+
     }
 }
