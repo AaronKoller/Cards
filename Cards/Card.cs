@@ -1,20 +1,26 @@
 ﻿
+using System;
+
 namespace Cards
 {
-    class Card
+    class Standard52 : ICardSuitValue<Standard52Suit, Standard52Value>
     {
-        public Card(Suit suit, CardValue cardValue)
+        public Standard52(Standard52Suit suit, Standard52Value value)
         {
             Suit = suit;
-            CardValue = cardValue;
+            Value = value;
         }
 
-        public Suit Suit { get; }
+        public Standard52Suit Suit { get; }
 
-        public CardValue CardValue { get; }
+        public Standard52Value Value { get; }
+
+        public int LengthSuit => Enum.GetNames(typeof(Standard52Suit)).Length;
+
+        public int LengthValue => Enum.GetNames(typeof(Standard52Value)).Length;
     }
 
-    public enum CardValue
+    public enum Standard52Value
     {
         Two = 2,
         Three = 3,
@@ -31,7 +37,7 @@ namespace Cards
         Ace = 14
     }
 
-    public enum Suit
+    public enum Standard52Suit
     {
         Hearts = 1,
         Spades = 2,
