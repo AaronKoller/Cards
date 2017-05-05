@@ -1,4 +1,4 @@
-﻿namespace Cards
+﻿namespace CardOrganizer
 {
     public interface ICardSuitValue<S, V>
     {

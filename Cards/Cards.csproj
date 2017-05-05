@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Card.cs" />
+    <Compile Include="Cards\Card.cs" />
+    <Compile Include="Cards\Standard.cs" />
+    <Compile Include="Cards\SuitValueEnums.cs" />
     <Compile Include="Deck.cs" />
-    <Compile Include="ICard.cs" />
+    <Compile Include="Cards\ICard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
