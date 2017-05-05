@@ -9,7 +9,7 @@ namespace CardOrganizer
         {
             try
             {
-                StartCardOrganizer();
+                StartSuperGenericCardOrganizer();
             }
             catch (Exception ex)
             {
@@ -24,7 +24,7 @@ namespace CardOrganizer
             }
         }
 
-        private static void StartCardOrganizer()
+        private static void StartSuperGenericCardOrganizer()
         {
             //we will create just a standard card
             var standardCard = new Standard<StandardSuit, StandardValue>();

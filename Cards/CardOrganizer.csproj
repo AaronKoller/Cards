@@ -7,7 +7,7 @@
     <ProjectGuid>{4D4DAB98-2FE2-46C1-B54D-7B37EA004B2D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>CardOrganizer</RootNamespace>
-    <AssemblyName>CardOrganizer</AssemblyName>
+    <AssemblyName>SuperGenericCardOrganizer</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
