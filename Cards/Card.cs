@@ -2,33 +2,35 @@
 
 namespace Cards
 {
-    class Standard52 : ICardSuitValue<Standard52Suit, Standard52Value>
+    class Standard : ICardSuitValue<StandardSuit, StandardValue>
     {
-        public Standard52()
+        public Standard()
         {
         }
 
-        private Standard52(Standard52Suit suit, Standard52Value value)
+        private Standard(StandardSuit suit, StandardValue value)
         {
             Suit = suit;
             Value = value;
         }
 
-        ICardSuitValue<Standard52Suit, Standard52Value> ICardSuitValue<Standard52Suit, Standard52Value>.CreateCard(Standard52Suit suit, Standard52Value value)
+        ICardSuitValue<StandardSuit, StandardValue> 
+            ICardSuitValue<StandardSuit, StandardValue>
+            .CreateCard(StandardSuit suit, StandardValue value)
         {
-            return new Standard52(suit, value);
+            return new Standard(suit, value);
         }
 
-        public Standard52Suit Suit { get; }
+        public StandardSuit Suit { get; }
 
-        public Standard52Value Value { get; }
+        public StandardValue Value { get; }
 
-        public int LengthSuit => Enum.GetNames(typeof(Standard52Suit)).Length;
+        public int LengthSuit => Enum.GetNames(typeof(StandardSuit)).Length;
 
-        public int LengthValue => Enum.GetNames(typeof(Standard52Value)).Length;
+        public int LengthValue => Enum.GetNames(typeof(StandardValue)).Length;
     }
 
-    public enum Standard52Value
+    public enum StandardValue
     {
         Two = 2,
         Three = 3,
@@ -45,7 +47,7 @@ namespace Cards
         Ace = 14
     }
 
-    public enum Standard52Suit
+    public enum StandardSuit
     {
         Hearts = 1,
         Spades = 2,
