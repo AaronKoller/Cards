@@ -1,49 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using CardOrganizer;
-using CardOrganizer.Cards;
+﻿using System.ComponentModel;
 
-namespace CardOrganizer
+namespace CardOrganizer.Cards
 {
-    class Standard<S, V> : Card<StandardSuit, StandardValue>
+    internal class Standard<S, V> : Card<S, V>
     {
         public Standard(Permutation permutation = Permutation.Standard)
         {
+            //check if the permutation of suit-value is valid
             switch (permutation)
             {
-                 case   Permutation.Standard:
+                case Permutation.Standard:
                     if (typeof(S) == typeof(StandardSuit) &&
                         typeof(V) == typeof(StandardValue))
-                    {
                         return;
-                    }
-                    throw new InvalidEnumArgumentException("A standard card expects a 'suit' enum of StandardSuit and a 'value' of standardValue");
+                    throw new InvalidEnumArgumentException(
+                        "A standard card expects a 'suit' enum of StandardSuit and a 'value' of standardValue");
             }
         }
 
-        private Standard(StandardSuit suit, StandardValue value)
+        private Standard(S suit, V value)
         {
             Suit = suit;
             Value = value;
         }
 
-        public override ICardSuitValue<StandardSuit, StandardValue> CreateCard(StandardSuit suit, StandardValue value)
+        public S Suit { get; }
+
+        public V Value { get; }
+
+        //Creates a concrete class of this card.  By creating a card this way, the deck can create any type.
+        public override ICardSuitValue<S, V> CreateCard(S suit, V value)
         {
             return new Standard<S, V>(suit, value);
         }
-
-        public StandardSuit Suit { get; }
-
-        public StandardValue Value { get; }
-
-        public int LengthSuit => Enum.GetNames(typeof(StandardSuit)).Length;
-
-        public int LengthValue => Enum.GetNames(typeof(StandardValue)).Length;
     }
-
-
-
-
-
 }

@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CardOrganizer.Cards;
 
 namespace CardOrganizer
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             try
             {
@@ -17,25 +13,31 @@ namespace CardOrganizer
             }
             catch (Exception ex)
             {
-                if (args == null)
+                if (args.Length == 0)
                 {
-                    Console.WriteLine("This program is buggy.  Get you money back and contact the developer");
+                    Console.WriteLine("This program is buggy.  Get you money back and contact the developer.");
                     return;
                 }
-                if(args[0] == "dev")
-                {
-                    Console.WriteLine(ex.Message  + Environment.NewLine + ex.StackTrace);
-                }
+                if (args[0] == "dev")
+                    Console.WriteLine("ERROR MESSAGE: "+ ex.Message + Environment.NewLine + 
+                                      "STACK TRACE " + ex.StackTrace);
             }
         }
 
         private static void StartCardOrganizer()
         {
-
-
+            //we will create just a standard card
             var standardCard = new Standard<StandardSuit, StandardValue>();
+            var test = standardCard.Suit;
+            var lengthSuite = standardCard.LengthSuit;
+            var lengthValue = standardCard.LengthValue;
             var deck = standardCard.CreateDeck();
+
+            var standardCard1 = new Standard<StandardValue, StandardSuit>(Permutation.Any);
+            var deck1 = standardCard1.CreateDeck();
+
+            var standardCard2 = new Standard<StandardValue, StandardSuit>();
+
         }
     }
 }
-

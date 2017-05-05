@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CardOrganizer.Cards;
 
-namespace CardOrganizer
+namespace CardOrganizer.Deck
 {
-    class DeckSuitValue<S, V>
+    internal class DeckSuitValue<S, V>
     {
         private readonly ICardSuitValue<S, V> _cardSuitValue;
 
@@ -11,8 +10,5 @@ namespace CardOrganizer
         {
             _cardSuitValue = cardSuitValue;
         }
-
-
     }
-
 }

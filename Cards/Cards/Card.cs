@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CardOrganizer.Cards
 {
@@ -10,10 +7,19 @@ namespace CardOrganizer.Cards
     {
         public virtual S Suit { get; }
         public virtual V Value { get; }
-        public virtual int LengthSuit { get; }
-        public virtual int LengthValue { get; }
 
-        public List<ICardSuitValue<S, V>> CreateDeck()
+        //each class needs to be responsible for creating its own concrete instance
+        public virtual ICardSuitValue<S, V> CreateCard(S s, V v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int LengthSuit => Enum.GetNames(typeof(S)).Length;
+
+        public int LengthValue => Enum.GetNames(typeof(V)).Length;
+
+        //all card types regardless of permutation will create a deck the same way
+        public IEnumerable<ICardSuitValue<S, V>> CreateDeck()
         {
             var deck = new List<ICardSuitValue<S, V>>();
 
@@ -23,14 +29,8 @@ namespace CardOrganizer.Cards
                 {
                     deck.Add(CreateCard(suit, value));
                 }
-
             }
             return deck;
-        }
-
-        public virtual ICardSuitValue<S, V> CreateCard(S suit, V v)
-        {
-            throw new NotImplementedException();
         }
     }
 }
