@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using CardOrganizer.Cards;
 
-namespace CardOrganizer.Deck {
+namespace CardOrganizer.Library {
     public static class ListExtensions {
         private static readonly Random _random = new Random();
 
@@ -23,10 +21,4 @@ namespace CardOrganizer.Deck {
             list[j] = tempItem;
         }
     }
-
-    //public static class CardListExtensions {
-    //    public static IList<Card<S, N>> CardSort<S, N>(this IList<Card<S, N>> list) {
-    //        return list.OrderBy(a => (int) a.Suit).ThenBy(b => (int) b.Name).ToList();
-    //    }
-    //}
 }

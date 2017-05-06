@@ -2,7 +2,7 @@
 
 namespace CardOrganizer.Cards
 {
-    internal class Standard<S, N> : Card<S, N>
+    public class Standard<S, N> : Card<S, N>
     {
         public Standard(Permutation permutation = Permutation.Standard)
         {
@@ -12,6 +12,9 @@ namespace CardOrganizer.Cards
                 case Permutation.Standard:
                     if (typeof(S) == typeof(StandardSuit) &&
                         typeof(N) == typeof(StandardName))
+                        return;
+                    if (typeof(S) == typeof(UnoSuit) &&
+                        typeof(N) == typeof(UnoName))
                         return;
                     throw new InvalidEnumArgumentException(
                         "A standard card expects a 'suit' enum of StandardSuit and a 'name' of standardName");

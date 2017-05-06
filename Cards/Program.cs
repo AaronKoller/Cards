@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CardOrganizer.Cards;
-using CardOrganizer.Deck;
+using CardOrganizer.Library;
 
 namespace CardOrganizer
 {
@@ -33,8 +33,26 @@ namespace CardOrganizer
             var standardCard = new Standard<StandardSuit, StandardName>();
             var deck = standardCard.CreateDeck();
             deck.Shuffle();
-            
+            Console.WriteLine("Shuffle the cards.  Press any key.");
+            Console.ReadKey();
+            foreach (var card in deck)
+            {
+                Console.WriteLine($"{card.Suit} - {card.Name}");
+            }
+
+            Console.WriteLine("Sort the cards.  Press any key.");
+            Console.ReadKey();
             var orderedDeck = deck.OrderBy(a => (int) a.Suit).ThenBy(b => (int) b.Name).ToList();
+
+            foreach (var card in orderedDeck)
+            {
+                Console.WriteLine($"{card.Suit} - {card.Name}");
+            }
+
+            //var unoCard = new Standard<UnoSuit, UnoName>();
+            //var unoDeck = unoCard.CreateDeck();
+            //unoDeck.Shuffle();
+            //var orderedUnoDeck = unoDeck.OrderBy(a => (int)a.Suit).ThenBy(b => (int)b.Name).ToList();
 
             //var standardCard1 = new Standard<StandardName, StandardSuit>(Permutation.Any);
             //var standardCard2 = new Standard<StandardName, StandardSuit>();

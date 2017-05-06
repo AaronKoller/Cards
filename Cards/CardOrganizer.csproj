@@ -39,7 +39,8 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\Standard.cs" />
     <Compile Include="Cards\SuitValueEnums.cs" />
-    <Compile Include="Deck\Deck.cs" />
+    <Compile Include="Deck\DeckSuiteValue.cs" />
+    <Compile Include="Library\ListExtensions.cs" />
     <Compile Include="Cards\ICard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

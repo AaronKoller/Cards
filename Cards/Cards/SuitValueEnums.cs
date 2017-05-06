@@ -31,4 +31,32 @@
         Clubs = 3,
         Diamonds = 4
     }
+
+    public enum UnoName
+    {
+        Zero = 0,
+        One = 1,
+        Two = 2,
+        Three = 3,
+        Four = 4,
+        Five = 5,
+        Six = 6,
+        Seven = 7,
+        Eight = 8,
+        Nine = 9,
+        Ten = 10,
+        DrawTwo = 11,
+        Reversse = 12,
+        Skip = 13,
+        WildDrawFour = 14,
+        Wild = 15
+    }
+
+    public enum UnoSuit
+    {
+        Red = 1,
+        Yellow = 2,
+        Green = 3,
+        Blue = 4
+    }
 }
