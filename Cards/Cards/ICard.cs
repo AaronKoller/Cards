@@ -1,15 +1,15 @@
 ﻿namespace CardOrganizer.Cards
 {
-    public interface ICardSuitValue<S, V>
+    public interface ICardSuitName<S, N>
     {
         S Suit { get; }
 
-        V Value { get; }
+        N Name { get; }
 
-        int LengthSuit { get; }
+        int ValueSuit { get; }
 
-        int LengthValue { get; }
+        int ValueName { get; }
 
-        ICardSuitValue<S, V> CreateCard(S suit, V value);
+        ICardSuitName<S, N> CreateCard(S suit, N name);
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using CardOrganizer.Cards;
+using CardOrganizer.Deck;
 
 namespace CardOrganizer
 {
@@ -16,27 +18,26 @@ namespace CardOrganizer
                 if (args.Length == 0)
                 {
                     Console.WriteLine("This program is buggy.  Get you money back and contact the developer.");
-                    return;
                 }
-                if (args[0] == "dev")
+               else if (args[0] == "dev")
                     Console.WriteLine("ERROR MESSAGE: "+ ex.Message + Environment.NewLine + 
                                       "STACK TRACE " + ex.StackTrace);
             }
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
         }
 
         private static void StartSuperGenericCardOrganizer()
         {
             //we will create just a standard card
-            var standardCard = new Standard<StandardSuit, StandardValue>();
-            var test = standardCard.Suit;
-            var lengthSuite = standardCard.LengthSuit;
-            var lengthValue = standardCard.LengthValue;
+            var standardCard = new Standard<StandardSuit, StandardName>();
             var deck = standardCard.CreateDeck();
+            deck.Shuffle();
+            
+            var orderedDeck = deck.OrderBy(a => (int) a.Suit).ThenBy(b => (int) b.Name).ToList();
 
-            var standardCard1 = new Standard<StandardValue, StandardSuit>(Permutation.Any);
-            var deck1 = standardCard1.CreateDeck();
-
-            var standardCard2 = new Standard<StandardValue, StandardSuit>();
+            //var standardCard1 = new Standard<StandardName, StandardSuit>(Permutation.Any);
+            //var standardCard2 = new Standard<StandardName, StandardSuit>();
 
         }
     }

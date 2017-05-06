@@ -1,33 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CardOrganizer.Cards
 {
-    public abstract class Card<S, V> : ICardSuitValue<S, V>
+    public abstract class Card<S, N> : ICardSuitName<S, N>
     {
         public virtual S Suit { get; }
-        public virtual V Value { get; }
+        public virtual N Name { get; }
 
         //each class needs to be responsible for creating its own concrete instance
-        public virtual ICardSuitValue<S, V> CreateCard(S s, V v)
+        public virtual ICardSuitName<S, N> CreateCard(S s, N n)
         {
             throw new NotImplementedException();
         }
 
-        public int LengthSuit => Enum.GetNames(typeof(S)).Length;
+        public int ValueSuit => GenericEnumToInt<S>();
 
-        public int LengthValue => Enum.GetNames(typeof(V)).Length;
+        public int ValueName => GenericEnumToInt<S>();
+
+        private int GenericEnumToInt<T>() {
+            Type genericType = typeof(T);
+            if (genericType.IsEnum)
+            {
+                foreach (T obj in Enum.GetValues(genericType))
+                {
+                    Enum test = Enum.Parse(typeof(T), obj.ToString()) as Enum;
+                    return Convert.ToInt32(test); // x is the integer value of enum
+                }
+            }
+            throw new InvalidEnumArgumentException("Only Enums can be passed to GenericEnumToInt()");
+        }
+
 
         //all card types regardless of permutation will create a deck the same way
-        public IEnumerable<ICardSuitValue<S, V>> CreateDeck()
+        public List<ICardSuitName<S, N>> CreateDeck()
         {
-            var deck = new List<ICardSuitValue<S, V>>();
+            var deck = new List<ICardSuitName<S, N>>();
 
             foreach (S suit in Enum.GetValues(typeof(S)))
             {
-                foreach (V value in Enum.GetValues(typeof(V)))
+                foreach (N name in Enum.GetValues(typeof(N)))
                 {
-                    deck.Add(CreateCard(suit, value));
+                    deck.Add(CreateCard(suit, name));
                 }
             }
             return deck;

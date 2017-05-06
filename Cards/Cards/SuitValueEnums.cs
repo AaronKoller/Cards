@@ -7,7 +7,7 @@
         Standard
     }
 
-    public enum StandardValue
+    public enum StandardName
     {
         Two = 2,
         Three = 3,
